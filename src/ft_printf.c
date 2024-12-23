@@ -6,7 +6,7 @@
 /*   By: hganet <hganet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 17:45:37 by hganet            #+#    #+#             */
-/*   Updated: 2024/12/23 15:48:50 by hganet           ###   ########.fr       */
+/*   Updated: 2024/12/23 16:36:40 by hganet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,41 +37,13 @@ int	count_args(const char *format)
 	}
 	return (count);
 }
-void	get_arg_type(char format)
-{
-	
-	if (format == 'c')
-		printf("char\n");
-	else if (format == 's')
-		printf("string\n");
-	else if ((format == 'i' || format == 'd'))
-		printf("int\n");
-	else if (format == 'p')
-		printf("adress\n");
-	else if (format == 'u')
-		printf("unsigned int\n");
-	else if (format == 'x')
-		printf("hexadecimal in lowercase\n");
-	else if (format == 'X')
-		printf("hexadecimal in uppercase\n");
-	else if (format == '%')
-		printf("percent sign\n");
-}
-
-void	print_char(int arg)
-{
-	char	c;
-
-	c = (char)arg;
-	write(1, &c, 1);
-}
 
 void	process_arg(char format, va_list args)
 {
 	if (format == 'c')
-		print_char(va_arg(args, int));
-	// if (format == 's')
-	// 	print_string(va_arg(args, char *));
+		ft_putchar_fd(va_arg(args, int), 1);
+	if (format == 's')
+		ft_putstr_fd(va_arg(args, char *), 1);
 	
 }
 
@@ -107,7 +79,6 @@ int	ft_printf(const char *format, ...)
 
 int	main()
 {
-		// printf("count = %i\n", ft_printf("%c", 'H'));
-		ft_printf("Coucou %c", 'A');
+		ft_printf("Coucou %s", "Hugo");
 		return (0);
 }

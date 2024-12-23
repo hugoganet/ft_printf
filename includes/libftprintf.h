@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   libftprintf.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hganet <hganet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 14:31:12 by hganet            #+#    #+#             */
-/*   Updated: 2024/12/23 15:47:30 by hganet           ###   ########.fr       */
+/*   Updated: 2024/12/23 16:16:05 by hganet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define LIBFTPRINTF_H
 
 #include <stdarg.h>
-#include "libft.h"
+#include "../libft/libft.h"
 
 int	ft_printf(const char *format, ...);
 

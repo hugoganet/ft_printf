@@ -31,13 +31,6 @@ CFLAGS = -Wall -Wextra -Werror
 # Default rule: Build the final library
 all: $(NAME)
 
-# Rule to create the final ft_printf library
-# - Combines object files from ft_printf with the libft.a static library
-$(NAME): $(OBJS) $(LIBFT)
-	@echo "Creating $(NAME)..."
-	ar rcs $(NAME) $(OBJS) $(LIBFT)
-	@echo "$(NAME) created successfully."
-
 # Rule to build the libft library by invoking its Makefile
 $(LIBFT):
 	@echo "Building libft..."
@@ -50,6 +43,14 @@ $(LIBFT):
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(OBJ_DIR)
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
+# Rule to create the final ft_printf library
+# - Combines object files from ft_printf with the libft.a static library
+$(NAME): $(OBJS) $(LIBFT)
+	@echo "Creating $(NAME)..."
+	ar rcs $(NAME) $(OBJS) $(LIBFT)
+	@echo "$(NAME) created successfully."
+
 
 # Clean rule: Remove object files from ft_printf and libft
 clean:
