@@ -6,33 +6,40 @@
 /*   By: hganet <hganet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 17:45:37 by hganet            #+#    #+#             */
-/*   Updated: 2024/12/21 19:39:41 by hganet           ###   ########.fr       */
+/*   Updated: 2024/12/23 15:48:50 by hganet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
-#include <stdio.h>
+#include "../includes/libftprintf.h"
 
-int	count_args(char format, int *i)
+int	count_args(const char *format)
 {
-	if (format == 'c'
-		|| format == 's'
-		|| format == 'd'
-		|| format == 'i'
-		|| format == 'p'
-		|| format == 'u'
-		|| format == 'x'
-		|| format == 'X'
-		|| format == '%')
-	{
-		(*i)++;
-		return (1);
-	}
-	else
+	int	i;
+	int	count;
+	
+	if (!format)
 		return (0);
+	count = 0;
+	i = 0;
+	while (format[i] && format[i + 1])
+	{
+		if (format[i] == '%'
+			&& (format[i + 1] == 'c' || format[i + 1] == 's'
+			|| format[i + 1] == 'd' || format[i + 1] == 'i'
+			|| format[i + 1] == 'p' || format[i + 1] == 'u'
+			|| format[i + 1] == 'x' || format[i + 1] == 'X'
+			|| format[i + 1] == '%'))
+			{
+				count++;
+				i++;
+			}
+		i++;
+	}
+	return (count);
 }
-int	get_arg_type(char format)
+void	get_arg_type(char format)
 {
+	
 	if (format == 'c')
 		printf("char\n");
 	else if (format == 's')
@@ -49,9 +56,23 @@ int	get_arg_type(char format)
 		printf("hexadecimal in uppercase\n");
 	else if (format == '%')
 		printf("percent sign\n");
-	else
-		return ;
-	return (1);
+}
+
+void	print_char(int arg)
+{
+	char	c;
+
+	c = (char)arg;
+	write(1, &c, 1);
+}
+
+void	process_arg(char format, va_list args)
+{
+	if (format == 'c')
+		print_char(va_arg(args, int));
+	// if (format == 's')
+	// 	print_string(va_arg(args, char *));
+	
 }
 
 int	ft_printf(const char *format, ...)
@@ -59,29 +80,34 @@ int	ft_printf(const char *format, ...)
 	int	i;
 	int	count;
 
-	i = 0;
-	while (format[i])
-		if (format[i] == '%')
-			count += count_args(format[i + 1], &i);
-		else
-			printf("%c", format[i]);
-		i++;
+	count = count_args(format);
 	if (count <= 0)
-		return ;
+		return (0);
 	va_list args;
 	va_start(args, format);
 	i = 0;
-	while (i < count)
-		va_arg(args, get_arg_type(format[i + 1]));
+	while (format[i])
+	{
+		if (format[i] == '%' && format[i + 1] && (format[i + 1] == 'c'
+			|| format[i + 1] == 's' || format[i + 1] == 'd'
+			|| format[i + 1] == 'i' || format[i + 1] == 'p'
+			|| format[i + 1] == 'u' || format[i + 1] == 'x'
+			|| format[i + 1] == 'X' || format[i + 1] == '%'))
+			{
+				process_arg(format[i + 1], args);
+				i++;
+			}
+		else
+			write(1, &format[i], 1);
+		i++;
+	}
 	va_end(args);
 	return (count);
 }
 
-int	main(int ac, char **av)
+int	main()
 {
-	if (ac > 0)
-	{
-		printf("count = %i\n", ft_printf("Coucou \n %c %s %i %d %p %u %x %X %%biloute\n"));
-	}
-	return (0);
+		// printf("count = %i\n", ft_printf("%c", 'H'));
+		ft_printf("Coucou %c", 'A');
+		return (0);
 }
