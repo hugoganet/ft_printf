@@ -22,7 +22,7 @@ OBJS = $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o))
 # - -I flag tells the compiler where to look for header files
 # - `includes` contains ft_printf-specific headers
 # - `$(LIBFT_DIR)` is for libft headers
-INCLUDES = -Iincludes -I$(LIBFT_DIR)
+INCLUDES = -Iincludes -I$(LIBFT_DIR)/includes
 
 # Compiler and flags
 CC = cc
@@ -40,15 +40,20 @@ $(LIBFT):
 # - $< is the first dependency (the source file)
 # - $@ is the target (object file)
 # - @mkdir -p $(OBJ_DIR)  (Ensure the object directory exists)
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c includes/libftprintf.h libft/includes/libft.h
 	@mkdir -p $(OBJ_DIR)
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 # Rule to create the final ft_printf library
 # - Combines object files from ft_printf with the libft.a static library
+# - ar x $(LIBFT) # Extract all object files from libft.a
+# - arc rcs $(NAME) $(OBJS) *.o # Combine ft_printf object files and libft object files
+# - rm -f *.o # Clean up extracted object files
 $(NAME): $(OBJS) $(LIBFT)
 	@echo "Creating $(NAME)..."
-	ar rcs $(NAME) $(OBJS) $(LIBFT)
+	ar x $(LIBFT)                      
+	ar rcs $(NAME) $(OBJS) *.o         
+	rm -f *.o
 	@echo "$(NAME) created successfully."
 
 

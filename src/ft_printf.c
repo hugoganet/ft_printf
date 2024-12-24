@@ -6,7 +6,7 @@
 /*   By: hganet <hganet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 17:45:37 by hganet            #+#    #+#             */
-/*   Updated: 2024/12/23 16:36:40 by hganet           ###   ########.fr       */
+/*   Updated: 2024/12/23 18:09:00 by hganet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,11 @@ void	process_arg(char format, va_list args)
 		ft_putchar_fd(va_arg(args, int), 1);
 	if (format == 's')
 		ft_putstr_fd(va_arg(args, char *), 1);
+	if (format == 'i' || format == 'd')
+		ft_putnbr_fd(va_arg(args, int), 1);
+	if (format == 'u')
+		ft_putnbr_unsigned_fd(va_arg(args, unsigned int), 1);
+	// if (format == 'x' || format == 'X')
 	
 }
 
@@ -75,10 +80,4 @@ int	ft_printf(const char *format, ...)
 	}
 	va_end(args);
 	return (count);
-}
-
-int	main()
-{
-		ft_printf("Coucou %s", "Hugo");
-		return (0);
 }
