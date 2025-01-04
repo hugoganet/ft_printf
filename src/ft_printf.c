@@ -6,11 +6,11 @@
 /*   By: hganet <hganet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 17:45:37 by hganet            #+#    #+#             */
-/*   Updated: 2024/12/23 18:09:00 by hganet           ###   ########.fr       */
+/*   Updated: 2025/01/04 14:13:23 by hganet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libftprintf.h"
+#include "libftprintf.h"
 
 int	count_args(const char *format)
 {

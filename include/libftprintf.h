@@ -6,7 +6,7 @@
 /*   By: hganet <hganet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 14:31:12 by hganet            #+#    #+#             */
-/*   Updated: 2024/12/24 09:28:52 by hganet           ###   ########.fr       */
+/*   Updated: 2025/01/04 14:13:47 by hganet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define LIBFTPRINTF_H
 
 #include <stdarg.h>
-#include "../libft/includes/libft.h"
+#include "libft.h"
 
 int	ft_printf(const char *format, ...);
 

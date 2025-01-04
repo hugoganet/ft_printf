@@ -22,7 +22,7 @@ OBJS = $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o))
 # - -I flag tells the compiler where to look for header files
 # - `includes` contains ft_printf-specific headers
 # - `$(LIBFT_DIR)` is for libft headers
-INCLUDES = -Iincludes -I$(LIBFT_DIR)/includes
+INCLUDES = -Iinclude -I$(LIBFT_DIR)/include
 
 # Compiler and flags
 CC = cc
@@ -40,7 +40,7 @@ $(LIBFT):
 # - $< is the first dependency (the source file)
 # - $@ is the target (object file)
 # - @mkdir -p $(OBJ_DIR)  (Ensure the object directory exists)
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c includes/libftprintf.h libft/includes/libft.h
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c include/libftprintf.h libft/include/libft.h
 	@mkdir -p $(OBJ_DIR)
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
