@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_unsigned_fd.c                            :+:      :+:    :+:   */
+/*   ft_putunbr_hex_fd.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hganet <hganet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/04 14:37:16 by hganet            #+#    #+#             */
-/*   Updated: 2025/01/04 16:03:59 by hganet           ###   ########.fr       */
+/*   Created: 2025/01/04 17:20:34 by hganet            #+#    #+#             */
+/*   Updated: 2025/01/04 17:20:35 by hganet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "libft.h"
 
-void	ft_putnbr_unsigned_fd(unsigned int n, int fd)
+void	ft_putunbr_hex_fd(uintptr_t address, int fd)
 {
-	char	c;
-
+	const char	*hex_chars = "0123456789abcdef";
+	char		c;
+	
 	if (fd < 0)
 		return ;
-	if (n > 9)
-		ft_putnbr_unsigned_fd(n / 10, fd);
-	c = n % 10 + '0';
-	write(fd, &c, 1);	
+	if (address >= 16)
+		ft_putunbr_hex_fd(address / 16, fd);
+	c = hex_chars[address % 16];
+	write(fd, &c, 1);
 }

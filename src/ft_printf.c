@@ -6,7 +6,7 @@
 /*   By: hganet <hganet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 17:45:37 by hganet            #+#    #+#             */
-/*   Updated: 2025/01/04 15:16:03 by hganet           ###   ########.fr       */
+/*   Updated: 2025/01/04 17:36:07 by hganet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,17 @@ int	count_args(const char *format)
 	return (count);
 }
 
+void	handle_pointer_format(void *arg)
+{	
+	if (arg == NULL)
+		ft_putstr_fd("(nil)", 1);
+	else
+	{
+		write(1, "0x", 2);
+		ft_putunbr_hex_fd((uintptr_t)arg, 1);
+	}
+}
+
 void	process_arg(char format, va_list args)
 {
 	if (format == 'c')
@@ -49,9 +60,10 @@ void	process_arg(char format, va_list args)
 	if (format == 'i' || format == 'd')
 		ft_putnbr_fd(va_arg(args, int), 1);
 	if (format == 'u')
-		ft_putnbr_unsigned_fd(va_arg(args, unsigned int), 1);
+		ft_putunbr_fd(va_arg(args, unsigned int), 1);
+	if (format == 'p')
+		handle_pointer_format(va_arg(args, void *));
 	// if (format == 'x' || format == 'X')
-	
 }
 
 int	ft_printf(const char *format, ...)

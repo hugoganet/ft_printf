@@ -6,7 +6,7 @@
 /*   By: hganet <hganet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 15:16:58 by hganet            #+#    #+#             */
-/*   Updated: 2025/01/04 15:59:09 by hganet           ###   ########.fr       */
+/*   Updated: 2025/01/04 16:35:36 by hganet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,9 @@ static int	check_base(char *base)
 	return (len);
 }
 
+/**
+ * 
+ */
 void	ft_putnbr_base_fd(int n, char *base, int fd)
 {
 	int		base_len;
