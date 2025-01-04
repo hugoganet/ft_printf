@@ -6,7 +6,7 @@
 /*   By: hganet <hganet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 17:45:37 by hganet            #+#    #+#             */
-/*   Updated: 2025/01/04 14:13:23 by hganet           ###   ########.fr       */
+/*   Updated: 2025/01/04 15:16:03 by hganet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ void	process_arg(char format, va_list args)
 {
 	if (format == 'c')
 		ft_putchar_fd(va_arg(args, int), 1);
+	if (format == '%')
+		ft_putchar_fd('%', 1);
 	if (format == 's')
 		ft_putstr_fd(va_arg(args, char *), 1);
 	if (format == 'i' || format == 'd')
