@@ -6,7 +6,7 @@
 /*   By: hganet <hganet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 17:45:37 by hganet            #+#    #+#             */
-/*   Updated: 2025/01/05 17:15:46 by hganet           ###   ########.fr       */
+/*   Updated: 2025/01/05 18:02:30 by hganet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,11 +92,13 @@ int	ft_printf(const char *format, ...)
 			|| format[i + 1] == 'i' || format[i + 1] == 'p'
 			|| format[i + 1] == 'u' || format[i + 1] == 'x'
 			|| format[i + 1] == 'X' || format[i + 1] == '%'))
-				process_arg(format[i++ + 1], args, &len);
+				process_arg(format[++i], args, &len);
 		else
+		{
 			write(1, &format[i], 1);
+			len++;
+		}
 		i++;
-		len++;
 	}
 	if (len < 0)
 		return (-1);
