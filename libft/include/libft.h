@@ -6,7 +6,7 @@
 /*   By: hganet <hganet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 12:13:10 by hganet            #+#    #+#             */
-/*   Updated: 2025/01/05 12:03:04 by hganet           ###   ########.fr       */
+/*   Updated: 2025/01/05 16:52:54 by hganet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	ft_putnbr_fd(int n, int fd);
 void	ft_putunbr_fd(unsigned int n, int fd);
 void	ft_putnbr_base_fd(int n, char *base, int fd);
 void	ft_putunbr_hex_fd(uintptr_t address, int fd);
+int		ft_check_base(char *base);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
 #endif

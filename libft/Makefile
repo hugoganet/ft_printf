@@ -38,6 +38,7 @@ SRC_FILES = ft_isalpha.c \
 			ft_putunbr_fd.c \
 			ft_putnbr_base_fd.c \
 			ft_putunbr_hex_fd.c \
+			ft_check_base.c \
 			ft_calloc.c \
 
 SRCS = $(addprefix $(SRC_DIR)/, $(SRC_FILES))

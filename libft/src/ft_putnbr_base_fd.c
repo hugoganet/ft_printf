@@ -6,36 +6,11 @@
 /*   By: hganet <hganet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 15:16:58 by hganet            #+#    #+#             */
-/*   Updated: 2025/01/05 13:32:46 by hganet           ###   ########.fr       */
+/*   Updated: 2025/01/05 15:51:58 by hganet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static int	check_base(char *base)
-{
-	int	len;
-	int	i;
-	int	j;
-	
-	len = ft_strlen(base);
-	if (len <= 1)
-		return (0);
-	if (ft_strchr(base, '-') || ft_strchr(base, '+'))
-		return (0);
-	i = 0;
-	while (base[i])
-	{
-		if (!ft_isprint(base[i]))
-			return (0);
-		j = i + 1;
-		while (base[j])
-			if (base[i] == base[j++])
-				return (0);
-		i++;
-	}
-	return (len);
-}
 
 /**
  * @brief Outputs the number 'n' in the given base to the given file descriptor.
@@ -50,7 +25,7 @@ void	ft_putnbr_base_fd(int n, char *base, int fd)
 
 	if (fd < 0)
 		return ;
-	base_len = check_base(base);
+	base_len = ft_check_base(base);
 	if (!base_len)
 		return ;
 	if (n == -2147483648)

@@ -31,7 +31,41 @@ int main()
 	ft_printf();
 	printf();
 	*/
-	printf("return value = %i\n", ft_printf("%c\n%s\n%i\n%d\n%u\n", 'H', "Hugo", 01234, 56789, 4294967295U));
-	printf("return value = %i\n", printf("%c\n%s\n%i\n%d\n%u\n", 'H', "Hugo", 01234, 56789, 4294967295U));
+	printf(" Return value             : %i\n\n",
+		   ft_printf(
+			   "Print a single character  : %c\n"
+			   "Print a string            : %s\n"
+			   "Print an int              : %i\n"
+			   "Print an int              : %d\n"
+			   "Print an unsigned int     : %u\n"
+			   "Print a hex in lowercase  : %x\n"
+			   "Print a hex in uppercase  : %X\n"
+			   "Print an address in hex   : %p\n",
+			   'H',
+			   "Hugo",
+			   01234,
+			   56789,
+			   4294967295U,
+			   123456789,
+			   123456789,
+			   NULL));
+	printf(" Return value             : %i\n",
+		   printf(
+			   "Print a single character  : %c\n"
+			   "Print a string            : %s\n"
+			   "Print an int              : %i\n"
+			   "Print an int              : %d\n"
+			   "Print an unsigned int     : %u\n"
+			   "Print a hex in lowercase  : %x\n"
+			   "Print a hex in uppercase  : %X\n"
+			   "Print an address in hex   : %p\n",
+			   'H',
+			   "Hugo",
+			   01234,
+			   56789,
+			   4294967295U,
+			   123456789,
+			   123456789,
+			   NULL));
 	return (0);
 }

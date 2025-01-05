@@ -9,7 +9,8 @@ LIBFT = $(LIBFT_DIR)/libft.a
 # Directory containing ft_printf source files
 SRC_DIR = src
 # List of source files for ft_printf
-SRC_FILES = ft_printf.c
+SRC_FILES = ft_printf.c process_args.c
+
 # Full paths to the source files
 SRCS = $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 
