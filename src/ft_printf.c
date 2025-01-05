@@ -6,7 +6,7 @@
 /*   By: hganet <hganet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 17:45:37 by hganet            #+#    #+#             */
-/*   Updated: 2025/01/04 17:36:07 by hganet           ###   ########.fr       */
+/*   Updated: 2025/01/05 12:07:46 by hganet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	handle_pointer_format(void *arg)
 		ft_putstr_fd("(nil)", 1);
 	else
 	{
-		write(1, "0x", 2);
+		ft_putstr_fd("x0", 1);
 		ft_putunbr_hex_fd((uintptr_t)arg, 1);
 	}
 }
