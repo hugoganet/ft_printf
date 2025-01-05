@@ -2,6 +2,7 @@
 
 int main()
 {
+	/*
 	// TESTINT %c Prints a single character.
 	ft_printf();
 	printf();
@@ -29,7 +30,8 @@ int main()
 	// TESTING %% Prints a percent sign.
 	ft_printf();
 	printf();
-ft_printf("%c\n%s\n%i\n%d\n%u\n", 'H', "Hugo", 01234, 56789, 4294967295U);
-	printf("%c\n%s\n%i\n%d\n%u\n", 'H', "Hugo", 01234, 56789, 4294967295U);
+	*/
+	printf("return value = %i\n", ft_printf("%c\n%s\n%i\n%d\n%u\n", 'H', "Hugo", 01234, 56789, 4294967295U));
+	printf("return value = %i\n", printf("%c\n%s\n%i\n%d\n%u\n", 'H', "Hugo", 01234, 56789, 4294967295U));
 	return (0);
 }

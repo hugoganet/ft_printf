@@ -6,7 +6,7 @@
 /*   By: hganet <hganet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 15:16:58 by hganet            #+#    #+#             */
-/*   Updated: 2025/01/04 16:35:36 by hganet           ###   ########.fr       */
+/*   Updated: 2025/01/05 13:32:46 by hganet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,10 @@ static int	check_base(char *base)
 }
 
 /**
- * 
+ * @brief Outputs the number 'n' in the given base to the given file descriptor.
+ * @param n The number to output.
+ * @param base The base in which to output the number.
+ * @param fd The file descriptor on which to write.
  */
 void	ft_putnbr_base_fd(int n, char *base, int fd)
 {

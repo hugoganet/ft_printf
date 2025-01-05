@@ -6,12 +6,17 @@
 /*   By: hganet <hganet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 17:01:48 by hganet            #+#    #+#             */
-/*   Updated: 2025/01/04 17:01:52 by hganet           ###   ########.fr       */
+/*   Updated: 2025/01/05 13:32:35 by hganet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * @brief Outputs the unsigned number to the given file descriptor.
+ * @param n The unsigned number to output.
+ * @param fd The file descriptor on which to write.
+ */
 void	ft_putunbr_fd(unsigned int n, int fd)
 {
 	char	c;

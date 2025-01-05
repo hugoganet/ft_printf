@@ -6,7 +6,7 @@
 /*   By: hganet <hganet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 17:45:37 by hganet            #+#    #+#             */
-/*   Updated: 2025/01/05 12:07:46 by hganet           ###   ########.fr       */
+/*   Updated: 2025/01/05 13:31:48 by hganet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,9 @@ void	process_arg(char format, va_list args)
 		ft_putunbr_fd(va_arg(args, unsigned int), 1);
 	if (format == 'p')
 		handle_pointer_format(va_arg(args, void *));
-	// if (format == 'x' || format == 'X')
+	if (format == 'x')
+		ft_putnbr_base_fd(va_arg(args, int), )
+	// if (format == 'X')
 }
 
 int	ft_printf(const char *format, ...)
