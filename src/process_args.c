@@ -6,7 +6,7 @@
 /*   By: hganet <hganet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 14:48:53 by hganet            #+#    #+#             */
-/*   Updated: 2025/01/05 17:00:48 by hganet           ###   ########.fr       */
+/*   Updated: 2025/01/05 18:13:29 by hganet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int	ft_putnbr_base_len_fd(int n, char *base, int fd)
 		n = -n;
 	}
 	if (n >= base_len)
-		ft_putnbr_base_len_fd(n / base_len, base, fd);
+		len += ft_putnbr_base_len_fd(n / base_len, base, fd);
 	len += write(fd, &base[n % base_len], 1);
 	return (len);
 }
