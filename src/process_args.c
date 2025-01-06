@@ -6,11 +6,11 @@
 /*   By: hganet <hganet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 14:48:53 by hganet            #+#    #+#             */
-/*   Updated: 2025/01/06 11:36:07 by hganet           ###   ########.fr       */
+/*   Updated: 2025/01/06 12:13:04 by hganet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	ft_putstr_len_fd(char *str, int fd)
 {
@@ -66,10 +66,10 @@ int	ft_putunbr_len_fd(unsigned int n, int fd)
 	return (len);
 }
 
-int	ft_putnbr_base_len_fd(int n, char *base, int fd)
+int	ft_putnbr_base_len_fd(unsigned int n, char *base, int fd)
 {
-	int		base_len;
-	int		len;
+	unsigned int	base_len;
+	int				len;
 
 	if (fd < 0)
 		return (0);
@@ -77,18 +77,6 @@ int	ft_putnbr_base_len_fd(int n, char *base, int fd)
 	base_len = ft_check_base(base);
 	if (!base_len)
 		return (0);
-	if (n == -2147483648)
-	{
-		len += write(fd, "-", 1);
-		len += ft_putnbr_base_len_fd(-(n / base_len), base, fd);
-		len += ft_putnbr_base_len_fd(-(n % base_len), base, fd);
-		return (len);
-	}
-	if (n < 0)
-	{
-		len += write(fd, "-", 1);
-		n = -n;
-	}
 	if (n >= base_len)
 		len += ft_putnbr_base_len_fd(n / base_len, base, fd);
 	len += write(fd, &base[n % base_len], 1);

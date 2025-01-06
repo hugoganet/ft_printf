@@ -6,43 +6,17 @@
 /*   By: hganet <hganet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 17:45:37 by hganet            #+#    #+#             */
-/*   Updated: 2025/01/06 11:40:10 by hganet           ###   ########.fr       */
+/*   Updated: 2025/01/06 12:27:32 by hganet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	ft_putstr_len_fd(char *str, int fd);
 int	ft_putnbr_len_fd(int n, int fd);
 int	ft_putunbr_len_fd(unsigned int n, int fd);
-int	ft_putnbr_base_len_fd(int n, char *base, int fd);
+int	ft_putnbr_base_len_fd(unsigned int n, char *base, int fd);
 int	handle_pointer_format(uintptr_t ptr, int fd);
-
-int	count_args(const char *format)
-{
-	int	i;
-	int	count;
-
-	if (!format)
-		return (0);
-	count = 0;
-	i = 0;
-	while (format[i] && format[i + 1])
-	{
-		if (format[i] == '%'
-			&& (format[i + 1] == 'c' || format[i + 1] == 's'
-				|| format[i + 1] == 'd' || format[i + 1] == 'i'
-				|| format[i + 1] == 'p' || format[i + 1] == 'u'
-				|| format[i + 1] == 'x' || format[i + 1] == 'X'
-				|| format[i + 1] == '%'))
-		{
-			count++;
-			i++;
-		}
-		i++;
-	}
-	return (count);
-}
 
 void	process_arg(char format, va_list args, int *len)
 {
@@ -70,26 +44,28 @@ void	process_arg(char format, va_list args, int *len)
 		*len += ft_putnbr_base_len_fd(va_arg(args, int), "0123456789ABCDEF", 1);
 }
 
+int	is_valid_format(char c)
+{
+	if ((
+			c == 'c' || c == 's' || c == 'd'
+			|| c == 'i' || c == 'p' || c == 'u'
+			|| c == 'x' || c == 'X' || c == '%'))
+		return (1);
+	return (0);
+}
+
 int	ft_printf(const char *format, ...)
 {
 	int		i;
-	int		count;
 	int		len;
 	va_list	args;
 
-	count = count_args(format);
-	if (count <= 0)
-		return (0);
 	va_start(args, format);
 	len = 0;
 	i = 0;
 	while (format[i])
 	{
-		if (format[i] == '%' && format[i + 1] && (format[i + 1] == 'c'
-				|| format[i + 1] == 's' || format[i + 1] == 'd'
-				|| format[i + 1] == 'i' || format[i + 1] == 'p'
-				|| format[i + 1] == 'u' || format[i + 1] == 'x'
-				|| format[i + 1] == 'X' || format[i + 1] == '%'))
+		if (format[i] == '%' && format[i + 1] && is_valid_format(format[i + 1]))
 			process_arg(format[++i], args, &len);
 		else
 		{
