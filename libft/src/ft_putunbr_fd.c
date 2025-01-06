@@ -6,7 +6,7 @@
 /*   By: hganet <hganet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 17:01:48 by hganet            #+#    #+#             */
-/*   Updated: 2025/01/05 18:26:21 by hganet           ###   ########.fr       */
+/*   Updated: 2025/01/06 11:29:20 by hganet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,5 @@ void	ft_putunbr_fd(unsigned int n, int fd)
 	if (n > 9)
 		ft_putunbr_fd(n / 10, fd);
 	c = n % 10 + '0';
-	write(fd, &c, 1);	
+	write(fd, &c, 1);
 }

@@ -6,7 +6,7 @@
 /*   By: hganet <hganet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 14:48:53 by hganet            #+#    #+#             */
-/*   Updated: 2025/01/05 18:13:29 by hganet           ###   ########.fr       */
+/*   Updated: 2025/01/06 11:36:07 by hganet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_putstr_len_fd(char *str, int fd)
 {
 	int	len;
-	
+
 	if (fd < 0)
 		return (0);
 	if (!str)
@@ -29,11 +29,11 @@ int	ft_putstr_len_fd(char *str, int fd)
 	return (len);
 }
 
-int ft_putnbr_len_fd(int	n, int fd)
+int	ft_putnbr_len_fd(int n, int fd)
 {
 	int		len;
 	char	c;
-	
+
 	if (fd < 0)
 		return (0);
 	len = 0;
@@ -70,7 +70,7 @@ int	ft_putnbr_base_len_fd(int n, char *base, int fd)
 {
 	int		base_len;
 	int		len;
-	
+
 	if (fd < 0)
 		return (0);
 	len = 0;
@@ -101,12 +101,12 @@ int	handle_pointer_format(uintptr_t ptr, int fd)
 	int		i;
 	char	*hex_base;
 	char	buffer[16];
-	
+
 	if (fd < 0)
 		return (0);
 	len = 0;
 	if (ptr == 0)
-		return(ft_putstr_len_fd("(nil)", fd));
+		return (ft_putstr_len_fd("(nil)", fd));
 	i = 0;
 	hex_base = "0123456789abcdef";
 	len += ft_putstr_len_fd("0x", fd);

@@ -41,7 +41,7 @@ $(LIBFT):
 # - $< is the first dependency (the source file)
 # - $@ is the target (object file)
 # - @mkdir -p $(OBJ_DIR)  (Ensure the object directory exists)
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c include/libftprintf.h libft/include/libft.h
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c include/ft_printf.h libft/include/libft.h
 	@mkdir -p $(OBJ_DIR)
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 

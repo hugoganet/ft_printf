@@ -6,7 +6,7 @@
 /*   By: hganet <hganet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 15:16:58 by hganet            #+#    #+#             */
-/*   Updated: 2025/01/05 15:51:58 by hganet           ###   ########.fr       */
+/*   Updated: 2025/01/06 11:33:30 by hganet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,5 @@ void	ft_putnbr_base_fd(int n, char *base, int fd)
 	if (n >= base_len)
 		ft_putnbr_base_fd(n / base_len, base, fd);
 	c = base[n % base_len];
-	write(fd, &c, 1);	
+	write(fd, &c, 1);
 }

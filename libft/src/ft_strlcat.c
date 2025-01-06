@@ -6,7 +6,7 @@
 /*   By: hganet <hganet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 10:16:47 by hganet            #+#    #+#             */
-/*   Updated: 2025/01/04 13:34:54 by hganet           ###   ########.fr       */
+/*   Updated: 2025/01/06 11:34:20 by hganet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,5 @@ size_t	ft_strlcat(char *dst, const char *src, size_t siz)
 	if (dst_i_len < siz)
 		return (ft_strlen(src) + dst_i_len);
 	else
-		return (ft_strlen(src) + siz);  
+		return (ft_strlen(src) + siz);
 }
