@@ -46,17 +46,26 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c include/ft_printf.h libft/include/libft.h
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 # Rule to create the final ft_printf library
-# - Combines object files from ft_printf with the libft.a static library
-# - ar x $(LIBFT) # Extract all object files from libft.a
-# - arc rcs $(NAME) $(OBJS) *.o # Combine ft_printf object files and libft object files
-# - rm -f *.o # Clean up extracted object files
+# This rule creates the `libftprintf.a` library by combining:
+# 1. Object files specific to ft_printf (`$(OBJS)`).
+# 2. Object files extracted from the precompiled `libft.a`.
 $(NAME): $(OBJS) $(LIBFT)
-	@echo "Creating $(NAME)..."
-	ar x $(LIBFT)                      
-	ar rcs $(NAME) $(OBJS) *.o         
+# Step 1: Extract all object files from the libft.a static library.
+# - `ar` is a tool to create, modify, and extract object files from static libraries.
+# - `x` extracts all the `.o` object files from `$(LIBFT)` into the current directory.
+	ar x $(LIBFT)
+# Step 2: Create the libftprintf.a library.
+# - `ar` is again used here, but this time to create or update a static library.
+# - `r` means "replace" existing files in the archive, or add new ones if they don't exist.
+# - `c` means "create" the library if it doesn’t already exist.
+# - `s` means "write an index" (symbol table) to the library for faster linking.
+# This combines:
+# - The object files for ft_printf (`$(OBJS)`).
+# - The extracted libft object files (`*.o`).
+	ar rcs $(NAME) $(OBJS) *.o
+# Step 3: Clean up the extracted object files.
 	rm -f *.o
 	@echo "$(NAME) created successfully."
-
 
 # Clean rule: Remove object files from ft_printf and libft
 clean:
